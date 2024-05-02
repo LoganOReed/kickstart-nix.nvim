@@ -47,6 +47,8 @@ with final.pkgs.lib; let
     neogit # https://github.com/TimUntersberger/neogit/
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
     vim-fugitive # https://github.com/tpope/vim-fugitive/
+    todo-comments-nvim # todo comments
+    better-escape-nvim # nice version of jk <esc>
     # ^ git integration plugins
     # telescope and extensions
     telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
@@ -58,13 +60,13 @@ with final.pkgs.lib; let
     nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     nvim-treesitter-context # nvim-treesitter-context
+    oil-nvim # file explorer
     # ^ UI
     # language support
     # ^ language support
     # navigation/editing enhancement plugins
     vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
     eyeliner-nvim # Highlights unique characters for f/F and t/T motions | https://github.com/jinh0/eyeliner.nvim
-    nvim-surround # https://github.com/kylechui/nvim-surround/
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
     # ^ navigation/editing enhancement plugins
@@ -76,10 +78,14 @@ with final.pkgs.lib; let
     plenary-nvim
     nvim-web-devicons
     vim-repeat
+    nvim-autopairs
+    leap-nvim
+    nvim-comment
     # ^ libraries that other plugins depend on
     # bleeding-edge plugins from flake inputs
     #(mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
     #(mkNvimPlugin inputs.dracula-nvim "dracula.nvim") # colorscheme
+    (mkNvimPlugin inputs.harpoon "harpoon") # harpoon
     # ^ bleeding-edge plugins from flake inputs
     dracula-nvim
     which-key-nvim

@@ -13,6 +13,11 @@
     #  flake = false;
     #  };
 
+    harpoon = {
+      url = "github:ThePrimeagen/harpoon/harpoon2";
+      flake = false;
+      };
+
 
     # new which-key which I need to style before adding
     #wf-nvim = {

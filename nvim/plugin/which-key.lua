@@ -32,7 +32,9 @@ keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase windo
 keymap("n", "<leader>ss", "<cmd>UltiSnipsEdit<cr>", opts)
 keymap("n", "<leader>sr", "<cmd>call UltiSnips#RefreshSnippets()<cr>", opts)
 
-keymap("n", "<leader>e", "<cmd>Oil --float<cr>", { desc = "Open parent directory" })
+-- Current version has a bug with floating window. TEMP:
+--keymap("n", "<leader>e", "<cmd>Oil --float<cr>", { desc = "Open parent directory" })
+keymap("n", "<leader>e", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 
 wk.register({
   ["<Esc>"] = { ":noh <CR>", "Clear highlights" },

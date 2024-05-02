@@ -51,7 +51,7 @@ opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
 opt.termguicolors = true
-opt.timeoutlen = 200
+opt.timeoutlen = 0
 
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
@@ -82,7 +82,7 @@ opt.showmatch = true -- Highlight matching parentheses, etc
 opt.incsearch = true
 opt.hlsearch = true
 
-opt.spell = true
+opt.spell = false
 opt.spelllang = 'en'
 
 opt.expandtab = true
