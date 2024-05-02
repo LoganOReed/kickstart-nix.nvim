@@ -31,6 +31,8 @@ with final.pkgs.lib; let
     nvim-treesitter.withAllGrammars
     luasnip # snippets | https://github.com/l3mon4d3/luasnip/
     # nvim-cmp (autocompletion) and extensions
+    persisted-nvim
+    project-nvim
     nvim-cmp # https://github.com/hrsh7th/nvim-cmp
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
     lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
@@ -61,6 +63,8 @@ with final.pkgs.lib; let
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     nvim-treesitter-context # nvim-treesitter-context
     oil-nvim # file explorer
+    toggleterm-nvim
+    alpha-nvim
     # ^ UI
     # language support
     # ^ language support
@@ -95,6 +99,7 @@ with final.pkgs.lib; let
     # language servers, etc.
     lua-language-server
     nil # nix LSP
+    lazygit
   ];
 in {
   # This is the neovim derivation
