@@ -43,7 +43,7 @@ opt.smartcase = true
 opt.mouse = "a"
 
 -- disable nvim intro
-opt.shortmess = opt.shortmess + "sI"
+opt.shortmess = opt.shortmess .. "sI"
 
 opt.signcolumn = "yes"
 opt.splitbelow = true
@@ -56,7 +56,7 @@ opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap = opt.whichwrap + "<>[]hl"
+opt.whichwrap = opt.whichwrap .. "<>[]hl"
 opt.compatible = false
 
 
