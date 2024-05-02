@@ -3,7 +3,13 @@
 -- THIS IS TEMPORARILY DISABLED
 --
 
-if true then
+--if true then
+--  return
+--end
+
+
+local status_ok, _ = pcall(require, "wf")
+if not status_ok then
   return
 end
 

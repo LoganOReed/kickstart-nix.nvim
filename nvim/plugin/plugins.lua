@@ -8,5 +8,5 @@ vim.g.did_load_plugins_plugin = true
 
 require('nvim-surround').setup()
 require('which-key').setup()
-require("wf").setup()
+--require("wf").setup()
 require("dracula").setup()

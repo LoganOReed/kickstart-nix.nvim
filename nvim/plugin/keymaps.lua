@@ -1,3 +1,7 @@
+
+-- NOTE:
+-- There are also definitions in which-key.lua
+
 if vim.g.did_load_keymaps_plugin then
   return
 end

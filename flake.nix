@@ -8,16 +8,17 @@
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    dracula-nvim = {
-      url = "github:Mofiqul/dracula.nvim";
-      flake = false;
-      };
+    #dracula-nvim = {
+    #  url = "github:Mofiqul/dracula.nvim";
+    #  flake = false;
+    #  };
 
 
-    wf-nvim = {
-      url = "github:Cassin01/wf.nvim";
-      flake = false;
-    };
+    # new which-key which I need to style before adding
+    #wf-nvim = {
+    #  url = "github:Cassin01/wf.nvim";
+    #  flake = false;
+    #};
   };
 
   outputs = inputs @ {
