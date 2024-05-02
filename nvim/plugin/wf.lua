@@ -1,3 +1,13 @@
+--
+-- NOTE!!!
+-- THIS IS TEMPORARILY DISABLED
+--
+
+if true then
+  return
+end
+
+
 if vim.g.did_load_wf_plugin then
   return
 end
@@ -13,7 +23,7 @@ local mark = require("wf.builtin.mark")
 -- Register
 vim.keymap.set(
   "n",
-  "<leader>wr",
+  "<leader>ww",
   -- register(opts?: table) -> function
   -- opts?: option
   register(),
