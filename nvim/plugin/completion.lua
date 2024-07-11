@@ -53,53 +53,46 @@ cmp.setup {
     end,
   },
   mapping = {
-    ['<C-b>'] = cmp.mapping(function(_)
-      if cmp.visible() then
-        cmp.scroll_docs(-4)
-      else
-        complete_with_source('buffer')
-      end
-    end, { 'i', 'c', 's' }),
-    ['<C-f>'] = cmp.mapping(function(_)
-      if cmp.visible() then
-        cmp.scroll_docs(4)
-      else
-        complete_with_source('path')
-      end
-    end, { 'i', 'c', 's' }),
-    ['<C-n>'] = cmp.mapping(function(fallback)
+    ['<C-e>'] = cmp.mapping.close(),
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<C-h>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-l>"] = cmp.mapping.scroll_docs(4),
+
+    ['<C-Space>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            if luasnip.expandable() then
+                luasnip.expand()
+            else
+                cmp.confirm({
+                    select = true,
+                })
+            end
+        else
+            fallback()
+        end
+    end),
+
+    ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      -- expand_or_jumpable(): Jump outside the snippet region
-      -- expand_or_locally_jumpable(): Only jump inside the snippet region
-      elseif luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
       else
         fallback()
       end
-    end, { 'i', 'c', 's' }),
-    ['<C-p>'] = cmp.mapping(function(fallback)
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      elseif luasnip.locally_jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
       end
-    end, { 'i', 'c', 's' }),
-    -- toggle completion
-    ['<C-e>'] = cmp.mapping(function(_)
-      if cmp.visible() then
-        cmp.close()
-      else
-        cmp.complete()
-      end
-    end, { 'i', 'c', 's' }),
-    ['<C-y>'] = cmp.mapping.confirm {
-      select = true,
-    },
+    end, { "i", "s" }),
+
   },
   sources = cmp.config.sources {
     -- The insertion order influences the priority of the sources
@@ -161,3 +154,56 @@ end, { noremap = false, desc = '[cmp] cmdline history' })
 vim.keymap.set({ 'c' }, '<C-c>', function()
   complete_with_source('cmdline')
 end, { noremap = false, desc = '[cmp] cmdline' })
+
+
+
+
+  -- mapping = {
+  --   ['<C-b>'] = cmp.mapping(function(_)
+  --     if cmp.visible() then
+  --       cmp.scroll_docs(-4)
+  --     else
+  --       complete_with_source('buffer')
+  --     end
+  --   end, { 'i', 'c', 's' }),
+  --   ['<C-f>'] = cmp.mapping(function(_)
+  --     if cmp.visible() then
+  --       cmp.scroll_docs(4)
+  --     else
+  --       complete_with_source('path')
+  --     end
+  --   end, { 'i', 'c', 's' }),
+  --   ['<C-n>'] = cmp.mapping(function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_next_item()
+  --     -- expand_or_jumpable(): Jump outside the snippet region
+  --     -- expand_or_locally_jumpable(): Only jump inside the snippet region
+  --     elseif luasnip.expand_or_locally_jumpable() then
+  --       luasnip.expand_or_jump()
+  --     elseif has_words_before() then
+  --       cmp.complete()
+  --     else
+  --       fallback()
+  --     end
+  --   end, { 'i', 'c', 's' }),
+  --   ['<C-p>'] = cmp.mapping(function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_prev_item()
+  --     elseif luasnip.jumpable(-1) then
+  --       luasnip.jump(-1)
+  --     else
+  --       fallback()
+  --     end
+  --   end, { 'i', 'c', 's' }),
+  --   -- toggle completion
+  --   ['<C-e>'] = cmp.mapping(function(_)
+  --     if cmp.visible() then
+  --       cmp.close()
+  --     else
+  --       cmp.complete()
+  --     end
+  --   end, { 'i', 'c', 's' }),
+  --   ['<C-y>'] = cmp.mapping.confirm {
+  --     select = true,
+  --   },
+  -- },
