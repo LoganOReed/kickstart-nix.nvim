@@ -37,26 +37,20 @@ keymap("n", "<leader>sr", "<cmd>call UltiSnips#RefreshSnippets()<cr>", opts)
 keymap("n", "<leader>e", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 
 wk.register({
-  ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
-  ["<leader>l"] = { name = "+Lsp" },
-
-  ["<leader>p"] = { name = "+Project" },
-  ["<leader>pp"] = { ":Telescope projects<CR>", "Find Projects" },
-
-  ["<leader>f"] = { name = "+Find" },
-  ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
-  ["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
-  ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-  ["<leader>fl"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-  ["<leader>ft"] = { "<cmd>TodoTelescope<cr>", "List Todos" },
-
-  ["<leader>t"] = { name = "+Term" },
-
-  -- switch between windows
-  ["<C-h>"] = { "<C-w>h", "Window left" },
-  ["<C-l>"] = { "<C-w>l", "Window right" },
-  ["<C-j>"] = { "<C-w>j", "Window down" },
-  ["<C-k>"] = { "<C-w>k", "Window up" },
-
-  ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
-})
+    { "<C-h>", "<C-w>h", desc = "Window left" },
+    { "<C-j>", "<C-w>j", desc = "Window down" },
+    { "<C-k>", "<C-w>k", desc = "Window up" },
+    { "<C-l>", "<C-w>l", desc = "Window right" },
+    { "<Esc>", ":noh <CR>", desc = "Clear highlights" },
+    { "<leader>f", group = "Find" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffer" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+    { "<leader>fl", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
+    { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "List Todos" },
+    { "<leader>l", group = "Lsp" },
+    { "<leader>p", group = "Project" },
+    { "<leader>pp", ":Telescope projects<CR>", desc = "Find Projects" },
+    { "<leader>t", group = "Term" },
+    { "p", 'p:let @+=@0<CR>:let @"=@0<CR>', desc = "Dont copy replaced text" },
+  })
