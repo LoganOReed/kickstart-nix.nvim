@@ -13,7 +13,6 @@ g.mapleader = " "
 g.maplocalleader = " "
 -- lua snippet format
 g.lua_snippets_path = "/home/occam/.snippets/luasnip"
-g.UltiSnipsSnippetDir = "/home/occam/.snippets/UltiSnips"
 
 
 ----------------------------------- options ----------------------------------------------
