@@ -26,8 +26,8 @@ keymap("v", ">", ">gv")
 -- Resize window using <ctrl> arrow keys
 keymap("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 keymap("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+keymap("n", "<C-Left>", "<cmd>vertical resize +2<cr>", { desc = "Decrease window width" })
+keymap("n", "<C-Right>", "<cmd>vertical resize -2<cr>", { desc = "Increase window width" })
 
 keymap("n", "<leader>ss", "<cmd>UltiSnipsEdit<cr>", opts)
 keymap("n", "<leader>sr", "<cmd>call UltiSnips#RefreshSnippets()<cr>", opts)

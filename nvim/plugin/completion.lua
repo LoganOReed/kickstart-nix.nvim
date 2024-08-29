@@ -24,6 +24,8 @@ local function complete_with_source(source)
   end
 end
 
+local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+
 cmp.setup {
   completion = {
     completeopt = 'menu,menuone,noinsert',
@@ -50,6 +52,8 @@ cmp.setup {
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      vim.fn["UltiSnips#Anon"](args.body)
+      
     end,
   },
   mapping = {
@@ -63,6 +67,8 @@ cmp.setup {
         if cmp.visible() then
             if luasnip.expandable() then
                 luasnip.expand()
+            elseif vim.fn["UltiSnips#CanExpandSnippet"]() then
+              cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
             else
                 cmp.confirm({
                     select = true,
@@ -76,8 +82,12 @@ cmp.setup {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif vim.fn["UltiSnips#CanExpandSnippet"]() then
+        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
       elseif luasnip.locally_jumpable(1) then
         luasnip.jump(1)
+      elseif vim.fn["UltiSnips#CanJumpForwards"]() then
+        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
       else
         fallback()
       end
@@ -88,6 +98,8 @@ cmp.setup {
         cmp.select_prev_item()
       elseif luasnip.locally_jumpable(-1) then
         luasnip.jump(-1)
+      elseif vim.fn["UltiSnips#CanJumpBackwards"]() then
+        cmp_ultisnips_mappings.jump_backwards(fallback)
       else
         fallback()
       end
