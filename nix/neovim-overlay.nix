@@ -10,6 +10,17 @@ with final.pkgs.lib; let
       version = src.lastModifiedDate;
     };
 
+  # Used to connect the keys for changing sway windows and nvim windows
+  vim-sway-nav = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-sway-nav";
+    src = pkgs.fetchFromSourcehut {
+      owner = "~jcc";
+      repo = "vim-sway-nav";
+      rev = "dd6fc84e26c30ed10be8ab4877511f89c7e58240";
+      hash = "sha256-eimWjUaG/5Y195yoA52vyQBxwEijzDJXWYaDwy+xyTo=";
+    };
+  };
+
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
   pkgs-wrapNeovim = inputs.nixpkgs.legacyPackages.${pkgs.system};
@@ -94,6 +105,7 @@ with final.pkgs.lib; let
     # ^ bleeding-edge plugins from flake inputs
     dracula-nvim
     which-key-nvim
+    vim-sway-nav
   ];
 
   extraPackages = with pkgs; [
