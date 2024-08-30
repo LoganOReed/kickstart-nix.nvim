@@ -23,7 +23,7 @@ require('luasnip').config.setup({
 })
 
 require("luasnip.loaders.from_lua").load({
-paths = "~/.snippets/luasnip"
+paths = {"~/.snippets/luasnip"}
 })
 
 
