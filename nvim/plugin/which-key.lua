@@ -54,10 +54,10 @@ wk.register({
   ["<leader>t"] = { name = "+Term" },
 
   -- switch between windows
-  ["<C-h>"] = { "<C-w>h", "Window left" },
-  ["<C-l>"] = { "<C-w>l", "Window right" },
-  ["<C-j>"] = { "<C-w>j", "Window down" },
-  ["<C-k>"] = { "<C-w>k", "Window up" },
+  -- ["<C-h>"] = { "<C-w>h", "Window left" },
+  -- ["<C-l>"] = { "<C-w>l", "Window right" },
+  -- ["<C-j>"] = { "<C-w>j", "Window down" },
+  -- ["<C-k>"] = { "<C-w>k", "Window up" },
 
   ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
 })

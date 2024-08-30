@@ -106,6 +106,7 @@ with final.pkgs.lib; let
     dracula-nvim
     which-key-nvim
     vim-sway-nav
+    vimtex
   ];
 
   extraPackages = with pkgs; [
@@ -113,6 +114,9 @@ with final.pkgs.lib; let
     lua-language-server
     nil # nix LSP
     lazygit
+    texlab
+    texliveMedium
+    zathura
   ];
 in {
   # This is the neovim derivation

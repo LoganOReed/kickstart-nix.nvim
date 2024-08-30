@@ -54,30 +54,50 @@ cmp.setup {
   },
   mapping = {
     ['<C-e>'] = cmp.mapping.close(),
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    ["<C-j>"] = cmp.mapping.select_next_item(),
-    ["<C-h>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-l>"] = cmp.mapping.scroll_docs(4),
+    ["<C-k>"] = cmp.mapping(function(fallback)
+      if luasnip.choice_active() then
+        luasnip.change_choice(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<C-j>"] = cmp.mapping(function(fallback)
+      if luasnip.choice_active() then
+        luasnip.change_choice(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<C-h>"] = cmp.mapping(function(fallback)
+      if luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<C-l>"] = cmp.mapping(function(fallback)
+      if luasnip.expandable() then
+        luasnip.expand()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
 
     ['<C-Space>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
-            if luasnip.expandable() then
-                luasnip.expand()
-            else
-                cmp.confirm({
-                    select = true,
-                })
-            end
+              cmp.confirm({
+                  select = true,
+              })
         else
             fallback()
         end
-    end),
+    end, { "i", "s" }),
 
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.locally_jumpable(1) then
-        luasnip.jump(1)
       else
         fallback()
       end
@@ -86,8 +106,6 @@ cmp.setup {
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.locally_jumpable(-1) then
-        luasnip.jump(-1)
       else
         fallback()
       end
@@ -100,6 +118,7 @@ cmp.setup {
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'buffer' },
     { name = 'path' },
+    { name = 'luasnip' }, --dunno if thisll break things
   },
   enabled = function()
     return vim.bo[0].buftype ~= 'prompt'

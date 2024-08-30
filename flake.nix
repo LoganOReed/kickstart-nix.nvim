@@ -63,6 +63,9 @@
           nil
           stylua
           luajitPackages.luacheck
+          zathura
+          texlab
+          wmctrl
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay

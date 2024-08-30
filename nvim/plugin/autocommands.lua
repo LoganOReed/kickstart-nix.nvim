@@ -127,6 +127,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+
+
 -- More examples, disabled by default
 
 -- Toggle between relative/absolute line numbers
