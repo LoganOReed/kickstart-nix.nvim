@@ -47,6 +47,7 @@ wk.register({
   ["<leader>f"] = { name = "+Find" },
   ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
   ["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
+  ["<leader>fe"] = { "<cmd>Telescope nerdy<cr>", "Find NerdFont Emoji" },
   ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   ["<leader>fl"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
   ["<leader>ft"] = { "<cmd>TodoTelescope<cr>", "List Todos" },

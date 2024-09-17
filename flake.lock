@@ -152,6 +152,22 @@
         "type": "github"
       }
     },
+    "nerdy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717173349,
+        "narHash": "sha256-k5ZmhUHGHlFuGWiviEYeHGCbXLZHY61pUnvpZgSJhPs=",
+        "owner": "2KAbhishek",
+        "repo": "nerdy.nvim",
+        "rev": "b467d6609b78d6a5f1e12cbc08fcc1ac87af20f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "2KAbhishek",
+        "repo": "nerdy.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1718714799,
@@ -198,11 +214,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1724819573,
-        "narHash": "sha256-GnR7/ibgIH1vhoy8cYdmXE6iyZqKqFxQSVkFgosBh6w=",
+        "lastModified": 1726463316,
+        "narHash": "sha256-gI9kkaH0ZjakJOKrdjaI/VbaMEo9qBbSUl93DnU7f4c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "71e91c409d1e654808b2621f28a327acfdad8dc2",
+        "rev": "99dc8785f6a0adac95f5e2ab05cc2e1bf666d172",
         "type": "github"
       },
       "original": {
@@ -217,6 +233,7 @@
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
         "harpoon": "harpoon",
+        "nerdy": "nerdy",
         "nixpkgs": "nixpkgs_2"
       }
     },

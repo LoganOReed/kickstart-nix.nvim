@@ -18,6 +18,11 @@
       flake = false;
       };
 
+    nerdy = {
+      url = "github:2KAbhishek/nerdy.nvim";
+      flake = false;
+    };
+
 
     # new which-key which I need to style before adding
     #wf-nvim = {

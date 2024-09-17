@@ -21,6 +21,8 @@ with final.pkgs.lib; let
     };
   };
 
+
+
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
   pkgs-wrapNeovim = inputs.nixpkgs.legacyPackages.${pkgs.system};
@@ -102,6 +104,7 @@ with final.pkgs.lib; let
     #(mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
     #(mkNvimPlugin inputs.dracula-nvim "dracula.nvim") # colorscheme
     (mkNvimPlugin inputs.harpoon "harpoon") # harpoon
+    (mkNvimPlugin inputs.nerdy "nerdy") # nerdy.nvim
     # ^ bleeding-edge plugins from flake inputs
     dracula-nvim
     which-key-nvim
