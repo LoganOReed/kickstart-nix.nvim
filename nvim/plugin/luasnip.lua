@@ -1,3 +1,9 @@
+local ok, _ = pcall(require, 'luasnip')
+if not ok then
+  -- not loaded
+  return
+end
+
 if vim.g.did_load_luasnip_plugin then
   return
 end

@@ -12,7 +12,7 @@ cmd[[colorscheme dracula]]
 g.mapleader = " "
 g.maplocalleader = " "
 -- lua snippet format
-g.lua_snippets_path = "/home/occam/.snippets/luasnip"
+-- g.lua_snippets_path = "/home/occam/.snippets/luasnip"
 g.UltiSnipsSnippetDirectories = {"/home/occam/dotfiles/modules/home-manager/nvim/UltiSnips"
                                   -- Used in previous (bad) way of doing snippet files
                                   -- "/home/occam/.snippets/UltiSnips"

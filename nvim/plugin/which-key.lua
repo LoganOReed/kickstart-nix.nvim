@@ -53,6 +53,7 @@ wk.register({
 
   ["<leader>s"] = { name = "+Snippets" },
   ["<leader>ss"] = { "<cmd>UltiSnipsEdit<cr>", "Edit UltiSnips" },
+  ["<leader>sl"] = { "<cmd>call UltiSnips#ListSnippets()<cr>", "List Relevant Snippets" },
   ["<leader>sr"] = { "<cmd>call UltiSnips#RefreshSnippets()<cr>", "Refresh UltiSnips Snippets" },
 
   ["<leader>t"] = { name = "+Term" },
