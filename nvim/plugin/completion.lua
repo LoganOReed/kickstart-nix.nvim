@@ -73,8 +73,6 @@ cmp.setup {
         cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
       elseif vim.fn["UltiSnips#CanJumpForwards"]() then
         cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-      elseif check_backspace() then
-        cmp.complete()
       else
         fallback()
       end
