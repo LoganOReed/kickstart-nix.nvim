@@ -13,6 +13,14 @@ g.mapleader = " "
 g.maplocalleader = " "
 -- lua snippet format
 g.lua_snippets_path = "/home/occam/.snippets/luasnip"
+g.UltiSnipsSnippetDirectories = {"/home/occam/dotfiles/modules/home-manager/nvim/UltiSnips"
+                                  -- Used in previous (bad) way of doing snippet files
+                                  -- "/home/occam/.snippets/UltiSnips"
+                                  }
+g.UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = "/home/occam/dotfiles/modules/home-manager/nvim/UltiSnips"
+g.UltiSnipsExpandTrigger = "<C-m>"
+g.UltiSnipsJumpForwardTrigger = "<C-n>"
+g.UltiSnipsJumpBackwardTrigger = "<C-p>"
 
 
 ----------------------------------- options ----------------------------------------------
@@ -85,6 +93,7 @@ opt.hlsearch = true
 opt.spell = false
 opt.spelllang = 'en'
 
+opt.foldmethod = 'manual'
 opt.foldenable = true
 opt.history = 2000
 opt.nrformats = 'bin,hex' -- 'octal'

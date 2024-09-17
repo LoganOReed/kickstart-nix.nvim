@@ -29,8 +29,7 @@ keymap("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" 
 keymap("n", "<C-Left>", "<cmd>vertical resize +2<cr>", { desc = "Decrease window width" })
 keymap("n", "<C-Right>", "<cmd>vertical resize -2<cr>", { desc = "Increase window width" })
 
-keymap("n", "<leader>ss", "<cmd>UltiSnipsEdit<cr>", opts)
-keymap("n", "<leader>sr", "<cmd>call UltiSnips#RefreshSnippets()<cr>", opts)
+
 
 -- Current version has a bug with floating window. TEMP:
 keymap("n", "<leader>e", "<cmd>Oil --float<cr>", { desc = "Open parent directory" })
@@ -51,6 +50,10 @@ wk.register({
   ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   ["<leader>fl"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
   ["<leader>ft"] = { "<cmd>TodoTelescope<cr>", "List Todos" },
+
+  ["<leader>s"] = { name = "+Snippets" },
+  ["<leader>ss"] = { "<cmd>UltiSnipsEdit<cr>", "Edit UltiSnips" },
+  ["<leader>sr"] = { "<cmd>call UltiSnips#RefreshSnippets()<cr>", "Refresh UltiSnips Snippets" },
 
   ["<leader>t"] = { name = "+Term" },
 
