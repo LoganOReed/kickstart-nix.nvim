@@ -67,11 +67,11 @@ cmp.setup {
 		}),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		-- ["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<C-l>"] = cmp.mapping(function(fallback)
-      if vim.fn["UltiSnips#CanExpandSnippet"]() then
-        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-      elseif vim.fn["UltiSnips#CanJumpForwards"]() then
+      if vim.fn["UltiSnips#CanJumpForwards"]() then
+        cmp_ultisnips_mappings.jump_forwards(fallback)
+      elseif vim.fn["UltiSnips#CanExpandSnippet"]() then
         cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
       else
         fallback()

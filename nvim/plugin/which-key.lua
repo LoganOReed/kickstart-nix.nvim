@@ -36,33 +36,53 @@ keymap("n", "<leader>e", "<cmd>Oil --float<cr>", { desc = "Open parent directory
 keymap("n", "<leader>E", "<cmd>Oil<cr>", { desc = "Open parent directory without float" })
 
 
-wk.register({
-  ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
-  ["<leader>l"] = { name = "+Lsp" },
+wk.add(  {
+    { "<Esc>", ":noh <CR>", desc = "Clear highlights" },
+    { "<leader>f", group = "Find" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffer" },
+    { "<leader>fe", "<cmd>Telescope nerdy<cr>", desc = "Find NerdFont Emoji" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+    { "<leader>fl", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
+    { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "List Todos" },
+    { "<leader>l", group = "Lsp" },
+    { "<leader>p", group = "Project" },
+    { "<leader>pp", ":Telescope projects<CR>", desc = "Find Projects" },
+    { "<leader>s", group = "Snippets" },
+    { "<leader>sl", "<cmd>call UltiSnips#ListSnippets()<cr>", desc = "List Relevant Snippets" },
+    { "<leader>sr", "<cmd>call UltiSnips#RefreshSnippets()<cr>", desc = "Refresh UltiSnips Snippets" },
+    { "<leader>ss", "<cmd>UltiSnipsEdit<cr>", desc = "Edit UltiSnips" },
+    { "<leader>t", group = "Term" },
+    { "p", 'p:let @+=@0<CR>:let @"=@0<CR>', desc = "Dont copy replaced text" },
+  })
 
-  ["<leader>p"] = { name = "+Project" },
-  ["<leader>pp"] = { ":Telescope projects<CR>", "Find Projects" },
-
-  ["<leader>f"] = { name = "+Find" },
-  ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
-  ["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
-  ["<leader>fe"] = { "<cmd>Telescope nerdy<cr>", "Find NerdFont Emoji" },
-  ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-  ["<leader>fl"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-  ["<leader>ft"] = { "<cmd>TodoTelescope<cr>", "List Todos" },
-
-  ["<leader>s"] = { name = "+Snippets" },
-  ["<leader>ss"] = { "<cmd>UltiSnipsEdit<cr>", "Edit UltiSnips" },
-  ["<leader>sl"] = { "<cmd>call UltiSnips#ListSnippets()<cr>", "List Relevant Snippets" },
-  ["<leader>sr"] = { "<cmd>call UltiSnips#RefreshSnippets()<cr>", "Refresh UltiSnips Snippets" },
-
-  ["<leader>t"] = { name = "+Term" },
-
-  -- switch between windows
-  -- ["<C-h>"] = { "<C-w>h", "Window left" },
-  -- ["<C-l>"] = { "<C-w>l", "Window right" },
-  -- ["<C-j>"] = { "<C-w>j", "Window down" },
-  -- ["<C-k>"] = { "<C-w>k", "Window up" },
-
-  ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
-})
+-- wk.register({
+--   ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
+--   ["<leader>l"] = { name = "+Lsp" },
+--
+--   ["<leader>p"] = { name = "+Project" },
+--   ["<leader>pp"] = { ":Telescope projects<CR>", "Find Projects" },
+--
+--   ["<leader>f"] = { name = "+Find" },
+--   ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
+--   ["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
+--   ["<leader>fe"] = { "<cmd>Telescope nerdy<cr>", "Find NerdFont Emoji" },
+--   ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+--   ["<leader>fl"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+--   ["<leader>ft"] = { "<cmd>TodoTelescope<cr>", "List Todos" },
+--
+--   ["<leader>s"] = { name = "+Snippets" },
+--   ["<leader>ss"] = { "<cmd>UltiSnipsEdit<cr>", "Edit UltiSnips" },
+--   ["<leader>sl"] = { "<cmd>call UltiSnips#ListSnippets()<cr>", "List Relevant Snippets" },
+--   ["<leader>sr"] = { "<cmd>call UltiSnips#RefreshSnippets()<cr>", "Refresh UltiSnips Snippets" },
+--
+--   ["<leader>t"] = { name = "+Term" },
+--
+--   -- switch between windows
+--   -- ["<C-h>"] = { "<C-w>h", "Window left" },
+--   -- ["<C-l>"] = { "<C-w>l", "Window right" },
+--   -- ["<C-j>"] = { "<C-w>j", "Window down" },
+--   -- ["<C-k>"] = { "<C-w>k", "Window up" },
+--
+--   ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
+-- })

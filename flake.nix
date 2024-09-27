@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
+    alejandra.url = "github:kamadorueda/alejandra";
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
@@ -16,13 +17,12 @@
     harpoon = {
       url = "github:ThePrimeagen/harpoon/harpoon2";
       flake = false;
-      };
+    };
 
     nerdy = {
       url = "github:2KAbhishek/nerdy.nvim";
       flake = false;
     };
-
 
     # new which-key which I need to style before adding
     #wf-nvim = {
@@ -71,6 +71,7 @@
           zathura
           texlab
           wmctrl
+          alejandra
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay
@@ -85,6 +86,7 @@
       devShells = {
         default = shell;
       };
+      formatter = nixpkgs.legacyPackages.${system}.alejandra;
     })
     // {
       # You can add this overlay to your NixOS configuration
