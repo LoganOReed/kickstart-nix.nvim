@@ -42,6 +42,7 @@ with final.pkgs.lib; let
     nvim-treesitter.withAllGrammars
     # luasnip # snippets | https://github.com/l3mon4d3/luasnip/
     ultisnips
+    telescope-manix
 
     # nvim-cmp (autocompletion) and extensions
     persisted-nvim
@@ -121,6 +122,7 @@ with final.pkgs.lib; let
     texlab
     texliveMedium
     zathura
+    manix
   ];
 in {
   # This is the neovim derivation

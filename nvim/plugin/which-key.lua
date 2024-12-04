@@ -45,6 +45,8 @@ wk.add(  {
     { "<leader>fl", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
     { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "List Todos" },
+    { "<leader>fn", "<cmd>Telescope manix<cr>", desc = "List Nix Docs" },
+    { "<leader>fN", "<cmd>lua require('telescope-manix').search({cword = true})<cr>", desc = "List Nix Doc Under Cursor" },
     { "<leader>l", group = "Lsp" },
     { "<leader>p", group = "Project" },
     { "<leader>pp", ":Telescope projects<CR>", desc = "Find Projects" },
