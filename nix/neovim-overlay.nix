@@ -107,7 +107,8 @@ with final.pkgs.lib; let
     # bleeding-edge plugins from flake inputs
     #(mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
     #(mkNvimPlugin inputs.dracula-nvim "dracula.nvim") # colorscheme
-    (mkNvimPlugin inputs.harpoon "harpoon") # harpoon
+    # (mkNvimPlugin inputs.harpoon "harpoon") # harpoon
+    harpoon2 # Temp while I debug, need to move up
     (mkNvimPlugin inputs.nerdy "nerdy") # nerdy.nvim
     # ^ bleeding-edge plugins from flake inputs
     dracula-nvim
