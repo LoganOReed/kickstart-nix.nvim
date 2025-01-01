@@ -76,7 +76,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap.set('n', 'gD', vim.lsp.buf.declaration, desc('lsp [g]o to [D]eclaration'))
     keymap.set('n', 'gd', vim.lsp.buf.definition, desc('lsp [g]o to [d]efinition'))
     keymap.set('n', '<space>gt', vim.lsp.buf.type_definition, desc('lsp [g]o to [t]ype definition'))
-    keymap.set('n', 'K', vim.lsp.buf.hover, desc('[lsp] hover'))
+    -- Commented as ufo.nvim handles this and fold previews
+    -- keymap.set('n', 'K', vim.lsp.buf.hover, desc('[lsp] hover'))
     keymap.set('n', '<space>pd', peek_definition, desc('lsp [p]eek [d]efinition'))
     keymap.set('n', '<space>pt', peek_type_definition, desc('lsp [p]eek [t]ype definition'))
     keymap.set('n', 'gi', vim.lsp.buf.implementation, desc('lsp [g]o to [i]mplementation'))
@@ -125,6 +126,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
       buf_refresh_codeLens()
     end
   end,
+})
+
+-- Save Folds in tex files
+vim.api.nvim_create_autocmd({"BufWinLeave"}, {
+  pattern = {"*.tex"},
+  desc = "save view (folds), when closing file",
+  command = "mkview",
+})
+vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+  pattern = {"*.tex"},
+  desc = "load view (folds), when opening file",
+  command = "silent! loadview"
 })
 
 

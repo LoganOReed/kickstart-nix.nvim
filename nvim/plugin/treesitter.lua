@@ -8,8 +8,8 @@ vim.g.skip_ts_context_comment_string_module = true
 
 ---@diagnostic disable-next-line: missing-fields
 configs.setup {
-  -- ensure_installed = 'all',
-  -- auto_install = false, -- Do not automatically install missing parsers when entering buffer
+  ensure_installed = 'all',
+  -- auto_install = true, -- Do not automatically install missing parsers when entering buffer
   highlight = {
     enable = true,
     -- using this instead of below because I couldn't figure out how to add them together
@@ -97,4 +97,4 @@ require('ts_context_commentstring').setup()
 
 -- Tree-sitter based folding
 -- vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'

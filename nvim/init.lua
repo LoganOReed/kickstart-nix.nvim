@@ -94,7 +94,10 @@ opt.spell = false
 opt.spelllang = 'en'
 
 opt.foldmethod = 'manual'
+opt.foldcolumn = '1'
 opt.foldenable = true
+opt.foldlevel = 99
+opt.foldlevelstart = 99
 opt.history = 2000
 opt.nrformats = 'bin,hex' -- 'octal'
 opt.undofile = true

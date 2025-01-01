@@ -11,6 +11,10 @@ local M = {}
 ---@return lsp.ClientCapabilities
 function M.make_client_capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+  }
   -- Add com_nvim_lsp capabilities
   local cmp_lsp = require('cmp_nvim_lsp')
   local cmp_lsp_capabilities = cmp_lsp.default_capabilities()

@@ -17,7 +17,8 @@ require('leap').create_default_mappings()
 require("nvim_comment").setup()
 require("persisted").setup()
 require('nvim-highlight-colors').setup({})
---require('eyeliner').setup ({
---  highlight_on_key = true, -- show highlights only after key press
---  dim = true, -- dim all other characters
---})
+require('eyeliner').setup ({
+ highlight_on_key = true, -- show highlights only after key press
+ dim = true, -- dim all other characters
+})
+
