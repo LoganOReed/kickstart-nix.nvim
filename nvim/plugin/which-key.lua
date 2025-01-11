@@ -10,6 +10,9 @@ local fn = vim.fn
 local keymap = vim.keymap.set
 local diagnostic = vim.diagnostic
 
+
+
+
 -- Silent keymap option
 local opts = { silent = true }
 
@@ -51,9 +54,11 @@ wk.add(  {
     { "<leader>p", group = "Project" },
     { "<leader>pp", ":Telescope projects<CR>", desc = "Find Projects" },
     { "<leader>s", group = "Snippets" },
-    { "<leader>sl", "<cmd>call UltiSnips#ListSnippets()<cr>", desc = "List Relevant Snippets" },
+    { "<leader>su", "<cmd>call UltiSnips#ListSnippets()<cr>", desc = "List Relevant Snippets" },
     { "<leader>sr", "<cmd>call UltiSnips#RefreshSnippets()<cr>", desc = "Refresh UltiSnips Snippets" },
     { "<leader>ss", "<cmd>UltiSnipsEdit<cr>", desc = "Edit UltiSnips" },
+    -- { "<leader>sl", "<cmd>lua require('luasnip.loaders').edit_snippet_files()<cr>", desc = "Edit LuaSnips" },
+    -- { "<leader>sl", "<cmd>Oil ~/dotfiles/modules/home-manager/nvim/luasnip<cr>", desc = "Edit LuaSnips" },
     { "<leader>t", group = "Term" },
     { "p", 'p:let @+=@0<CR>:let @"=@0<CR>', desc = "Dont copy replaced text" },
   })

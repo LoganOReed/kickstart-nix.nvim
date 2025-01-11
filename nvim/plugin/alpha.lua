@@ -132,9 +132,11 @@ local dashboard = require "alpha.themes.dashboard"
 math.randomseed(os.time())
 dashboard.section.header.val = banners[ math.random( #banners ) ]
 dashboard.section.buttons.val = {
-  dashboard.button("s", "󰁯 " .. " Restore Session", "<cmd>lua require('persisted').load({ last = true })<cr>"),
-  dashboard.button("c", "󱁤 " .. " Config", ":e $HOME/documents/code/kickstart-nix.nvim <CR>"),
-  dashboard.button("n", "󱄅 " .. " Config", ":e $HOME/dotfiles <CR>"),
+ 
+  dashboard.button("s", " " .. " Select Session", "<cmd>Telescope persisted<cr>"),
+  dashboard.button("r", "󰁯 " .. " Most Recent Session", "<cmd>lua require('persisted').load({ last = true })<cr>"),
+  dashboard.button("c", "󱁤 " .. " Edit Nvim Config", ":e $HOME/documents/code/kickstart-nix.nvim <CR>"),
+  dashboard.button("n", "󱄅 " .. " Edit Dotfiles", ":e $HOME/dotfiles <CR>"),
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
 local function footer()
