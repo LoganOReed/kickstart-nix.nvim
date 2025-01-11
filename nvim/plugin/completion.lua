@@ -3,8 +3,12 @@ if vim.g.did_load_completion_plugin then
 end
 vim.g.did_load_completion_plugin = true
 
+-- otherwise it deletes while jumping
+vim.keymap.set("", "<C-h>", "<Nop>", { silent = true })
+
 local cmp = require('cmp')
 local lspkind = require('lspkind')
+local luasnip = require('luasnip')
 
 -- require("cmp_nvim_ultisnips").setup{}
 local cmp_ultisnips_mappings = require('cmp_nvim_ultisnips.mappings')
@@ -12,10 +16,17 @@ local cmp_ultisnips_mappings = require('cmp_nvim_ultisnips.mappings')
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
-local check_backspace = function()
-	local col = vim.fn.col(".") - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
+
+-- used in previous setup
+-- local check_backspace = function()
+-- 	local col = vim.fn.col(".") - 1
+-- 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+-- end
 
 ---@param source string|table
 local function complete_with_source(source)
@@ -45,19 +56,23 @@ cmp.setup {
         nvim_lsp_document_symbol = '[LSP]',
         nvim_lua = '[API]',
         path = '[PATH]',
-        -- luasnip = '[SNIP]',
+        luasnip = '[SNIP]',
         ultisnips = '[SNIP]',
       },
     },
   },
   snippet = {
     expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body)
+      if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
+        vim.fn["UltiSnips#ExpandSnippet"]()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        print("No snippet available to expand")
+      end
     end,
   },
  	mapping = {
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -68,12 +83,27 @@ cmp.setup {
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		-- ["<CR>"] = cmp.mapping.confirm({ select = false }),
+		["<C-h>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+        vim.fn["UltiSnips#JumpBackwards"]()
+      else
+        fallback()
+      end
+    end,
+      {
+			"i",
+			"s",
+		}),
 		["<C-l>"] = cmp.mapping(function(fallback)
-      if vim.fn["UltiSnips#CanExpandSnippet"]() then
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif vim.fn["UltiSnips#CanExpandSnippet"]() then
         cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-      elseif vim.fn["UltiSnips#CanJumpForwards"]() then
-        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-      elseif check_backspace() then
+      elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+        vim.fn["UltiSnips#JumpForwards"]()
+      elseif has_words_before() then
         cmp.complete()
       else
         fallback()
@@ -84,12 +114,12 @@ cmp.setup {
 			"s",
 		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
-     if vim.fn["UltiSnips#CanJumpForwards"]() then
-        cmp_ultisnips_mappings.jump_forwards(fallback)
-      elseif vim.fn["UltiSnips#CanExpandSnippet"]() then
-        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-      else
-        fallback()
+      if not cmp.select_next_item() then
+        if has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
       end
     end,
       {
@@ -97,12 +127,12 @@ cmp.setup {
 			"s",
 		}),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif vim.fn["UltiSnips#CanJumpBackwards"]() then
-        cmp_ultisnips_mappings.jump_backwards(fallback)
-      else
-        fallback()
+      if not cmp.select_prev_item() then
+        if has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
       end
     end,
       {
@@ -110,16 +140,15 @@ cmp.setup {
 			"s",
 		}),
 
-
   },
   sources = cmp.config.sources {
     -- The insertion order influences the priority of the sources
-    { name = 'nvim_lsp', keyword_length = 3 },
-    { name = 'nvim_lsp_signature_help', keyword_length = 3 },
-    { name = 'buffer' },
-    { name = 'path' },
     { name = 'ultisnips' },
-    -- { name = 'luasnip' }, --dunno if thisll break things
+    { name = 'luasnip' }, --dunno if thisll break things
+    { name = 'nvim_lsp', keyword_length = 1 },
+    { name = 'nvim_lsp_signature_help', keyword_length = 1 },
+    { name = 'path' },
+    { name = 'buffer' },
   },
   enabled = function()
     return vim.bo[0].buftype ~= 'prompt'
@@ -133,8 +162,10 @@ cmp.setup {
 cmp.setup.filetype('lua', {
   sources = cmp.config.sources {
     { name = 'nvim_lua' },
-    { name = 'nvim_lsp', keyword_length = 3 },
+    { name = 'nvim_lsp', keyword_length = 1 },
     { name = 'path' },
+    { name = 'ultisnips' },
+    { name = 'luasnip' }, --dunno if thisll break things
   },
 })
 

@@ -9,6 +9,8 @@ if vim.g.did_load_luasnip_plugin then
 end
 vim.g.did_load_luasnip = true
 
+local ls = require("luasnip")
+
 require('luasnip').setup({
 -- snip_env = {
 -- 		s = function(...)
@@ -29,8 +31,20 @@ require('luasnip').config.setup({
 })
 
 require("luasnip.loaders.from_lua").lazy_load({
-paths = {"/home/occam/.snippets/luasnip"}
+paths = {"/home/occam/dotfiles/modules/home-manager/nvim/luasnip"}
 })
 
 
-vim.api.nvim_set_keymap("i", "<C-f>", "<Plug>luasnip-jump-next", {})
+
+
+vim.keymap.set({"i", "s"}, "<C-j>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, {silent = true})
+
+vim.keymap.set({"i", "s"}, "<C-k>", function()
+	if ls.choice_active() then
+		ls.change_choice(-1)
+	end
+end, {silent = true})
