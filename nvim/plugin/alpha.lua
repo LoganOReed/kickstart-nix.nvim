@@ -133,8 +133,8 @@ math.randomseed(os.time())
 dashboard.section.header.val = banners[ math.random( #banners ) ]
 dashboard.section.buttons.val = {
   dashboard.button("s", "󰁯 " .. " Restore Session", "<cmd>lua require('persisted').load({ last = true })<cr>"),
-  dashboard.button("c", "󱁤 " .. " Config", ":e $HOME/documents/code/kickstart-nix.nvim <CR>"),
-  dashboard.button("n", "󱄅 " .. " Config", ":e $HOME/dotfiles <CR>"),
+  dashboard.button("c", "󱁤 " .. " Config", ":e $MYVIMRC <CR>"),
+  dashboard.button("n", "󱄅 " .. " Config", ":e $HOME/.config/nixos/flake.nix <CR>"),
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
 local function footer()
