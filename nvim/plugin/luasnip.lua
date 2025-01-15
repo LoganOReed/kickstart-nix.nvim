@@ -29,7 +29,7 @@ require('luasnip').setup({
 require('luasnip').config.setup({
   enable_autosnippets = true,
   store_selection_keys = "<Tab>",
-  history = false,
+  history = true,
   updateevents = "TextChanged, TextChangedI",
   delete_check_events = "TextChanged",
   ft_func = require("luasnip.extras.filetype_functions").from_cursor,
