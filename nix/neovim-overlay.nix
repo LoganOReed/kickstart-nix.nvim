@@ -115,6 +115,7 @@ with final.pkgs.lib; let
     which-key-nvim
     vim-sway-nav
     vimtex
+    hardtime-nvim # maybe start disabled if it gets annoying
   ];
 
   extraPackages = with pkgs; [
