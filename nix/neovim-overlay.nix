@@ -21,8 +21,6 @@ with final.pkgs.lib; let
     };
   };
 
-
-
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
   pkgs-wrapNeovim = inputs.nixpkgs.legacyPackages.${pkgs.system};
@@ -117,7 +115,6 @@ with final.pkgs.lib; let
     which-key-nvim
     vim-sway-nav
     vimtex
-    hardtime-nvim # maybe start disabled if it gets annoying
   ];
 
   extraPackages = with pkgs; [

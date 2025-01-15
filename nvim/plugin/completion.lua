@@ -4,8 +4,7 @@ end
 vim.g.did_load_completion_plugin = true
 
 -- otherwise it deletes while jumping
--- NOTE: Changed to C-j to fix this
--- vim.keymap.set("", "<C-h>", "<Nop>", { silent = true })
+vim.keymap.set("", "<C-h>", "<Nop>", { silent = true })
 
 local cmp = require('cmp')
 local lspkind = require('lspkind')
@@ -84,7 +83,7 @@ cmp.setup {
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		-- ["<CR>"] = cmp.mapping.confirm({ select = false }),
-		["<C-j>"] = cmp.mapping(function(fallback)
+		["<C-h>"] = cmp.mapping(function(fallback)
       if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
@@ -146,8 +145,8 @@ cmp.setup {
     -- The insertion order influences the priority of the sources
     { name = 'ultisnips' },
     { name = 'luasnip' }, --dunno if thisll break things
-    { name = 'nvim_lsp', keyword_length = 3 },
-    { name = 'nvim_lsp_signature_help', keyword_length = 3 },
+    { name = 'nvim_lsp', keyword_length = 1 },
+    { name = 'nvim_lsp_signature_help', keyword_length = 1 },
     { name = 'path' },
     { name = 'buffer' },
   },
@@ -163,7 +162,7 @@ cmp.setup {
 cmp.setup.filetype('lua', {
   sources = cmp.config.sources {
     { name = 'nvim_lua' },
-    { name = 'nvim_lsp', keyword_length = 3 },
+    { name = 'nvim_lsp', keyword_length = 1 },
     { name = 'path' },
     { name = 'ultisnips' },
     { name = 'luasnip' }, --dunno if thisll break things
