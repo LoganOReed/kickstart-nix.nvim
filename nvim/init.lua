@@ -4,6 +4,8 @@ local opt = vim.o
 local g = vim.g
 
 
+
+
 -- Color Scheme 
 cmd[[colorscheme dracula]]
 
@@ -13,8 +15,7 @@ g.mapleader = " "
 g.maplocalleader = " "
 -- lua snippet format
 -- g.lua_snippets_path = "/home/occam/.snippets/luasnip"
-g.UltiSnipsSnippetDirectories = {"/home/occam/dotfiles/modules/home-manager/nvim/UltiSnips",
-                                 "/home/occam/dotfiles/modules/home/nvim/UltiSnips"
+g.UltiSnipsSnippetDirectories = {"/home/occam/dotfiles/modules/home/nvim/UltiSnips"
                                   -- Used in previous (bad) way of doing snippet files
                                   -- "/home/occam/.snippets/UltiSnips"
                                   }
