@@ -19,7 +19,7 @@ g.UltiSnipsSnippetDirectories = {"/home/occam/dotfiles/modules/home/nvim/UltiSni
                                   -- Used in previous (bad) way of doing snippet files
                                   -- "/home/occam/.snippets/UltiSnips"
                                   }
-g.UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = "/home/occam/dotfiles/modules/home-manager/nvim/UltiSnips"
+g.UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = "/home/occam/dotfiles/modules/home/nvim/UltiSnips"
 g.UltiSnipsExpandTrigger = "<C-m>"
 g.UltiSnipsJumpForwardTrigger = "<C-n>"
 g.UltiSnipsJumpBackwardTrigger = "<C-p>"
