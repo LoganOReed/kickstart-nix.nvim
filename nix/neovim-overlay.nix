@@ -116,6 +116,8 @@ with final.pkgs.lib; let
     vim-sway-nav
     vimtex
     hardtime-nvim # maybe start disabled if it gets annoying
+    image-nvim
+
   ];
 
   extraPackages = with pkgs; [
@@ -128,13 +130,16 @@ with final.pkgs.lib; let
     zathura
     manix
     pplatex
+    imagemagick
+    # ueberzugpp
   ];
+  extraLuaPackages = ps: [ps.magick];
 in {
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
-    inherit extraPackages;
+    inherit extraPackages extraLuaPackages;
   };
 
   # This can be symlinked in the devShell's shellHook
