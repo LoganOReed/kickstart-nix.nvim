@@ -129,17 +129,49 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Save Folds in tex files
-vim.api.nvim_create_autocmd({"BufWinLeave"}, {
+vim.api.nvim_create_augroup("VimtexBasedWorkflow", { clear = true })
+vim.api.nvim_create_autocmd({"BufLeave"}, {
   pattern = {"*.tex"},
-  desc = "save view (folds), when closing file",
-  command = "mkview",
+  group = "VimtexBasedWorkflow",
+  desc = "save view (folds) and append rtp for snippets, when closing file",
+  callback = function()
+    -- save folds
+    vim.cmd("mkview")
+    -- remove curbuf dir from rtp
+    local buf_dir = vim.fn.expand("%:p:h")
+    if buf_dir ~= "" then
+      local current_rtp = vim.opt.rtp:get()
+      local new_rtp = vim.tbl_filter(function(dir) return dir ~= buf_dir end, current_rtp)
+      vim.opt.rtp = new_rtp
+    end
+  end,
+
 })
-vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+vim.api.nvim_create_autocmd({"BufEnter"}, {
   pattern = {"*.tex"},
-  desc = "load view (folds), when opening file",
-  command = "silent! loadview"
+  group = "VimtexBasedWorkflow",
+  desc = "load view (folds) and append rtp for snippets, when opening file",
+  callback = function()
+    -- load folds
+    vim.cmd("silent! loadview")
+    -- add curr buf dir to rtp
+    local buf_dir = vim.fn.expand("%:p:h")
+    if buf_dir ~= "" then
+      vim.opt.rtp:append(buf_dir)
+    end
+  end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "tex", "latex" },
+  group = "VimtexBasedWorkflow",
+  callback = function()
+    vim.opt_local.conceallevel = 2
+    local global_path = vim.g.UltiSnipsSnippetDirectories[1]
+    local local_path = vim.loop.cwd() .. "/UltiSnips"
+    vim.b.UltiSnipsSnippetDirectories = {global_path, local_path }
+  end,
+})
 
 
 -- More examples, disabled by default

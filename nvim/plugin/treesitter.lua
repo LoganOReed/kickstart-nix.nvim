@@ -14,7 +14,7 @@ configs.setup {
     enable = true,
     -- using this instead of below because I couldn't figure out how to add them together
     -- and snippets won't work properly without it
-    disable = {"latex"},
+    disable = {"latex", "tex"},
     -- disable = function(_, buf)
     --   local max_filesize = 100 * 1024 -- 100 KiB
     --   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
@@ -26,6 +26,7 @@ configs.setup {
   textobjects = {
     select = {
       enable = true,
+      disable = {"latex", "tex"},
       -- Automatically jump forward to textobject, similar to targets.vim
       lookahead = true,
       keymaps = {
@@ -52,6 +53,7 @@ configs.setup {
     },
     swap = {
       enable = true,
+      disable = {"latex", "tex"},
       swap_next = {
         ['C-a'] = '@parameter.inner',
       },
@@ -61,6 +63,7 @@ configs.setup {
     },
     move = {
       enable = true,
+      disable = {"latex", "tex"},
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
         [']m'] = '@function.outer',
