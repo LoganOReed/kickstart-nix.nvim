@@ -120,6 +120,8 @@ with final.pkgs.lib; let
     
     image-nvim # for inline images and molten
     molten-nvim # jupyter notebooks in nvim
+    jupytext-nvim
+    quarto-nvim
 
   ];
 
@@ -134,11 +136,14 @@ with final.pkgs.lib; let
     manix
     pplatex
     imagemagick
+    python3Packages.jupytext
+    quarto
     # ueberzugpp
   ];
   extraLuaPackages = ps: [ps.magick];
   extraPython3Packages = ps: with ps;[
     pynvim
+    jupytext
     jupyter-client
     cairosvg
     pnglatex
@@ -146,10 +151,6 @@ with final.pkgs.lib; let
     pyperclip
     kaleido
   ];
-
-  withNodeJs = true;
-  withRuby = true;
-  withPython3 = true;
 
 in {
   # This is the neovim derivation

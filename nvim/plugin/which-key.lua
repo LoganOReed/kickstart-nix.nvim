@@ -55,6 +55,25 @@ wk.add(  {
     { "<leader>sr", "<cmd>call UltiSnips#RefreshSnippets()<cr>", desc = "Refresh UltiSnips Snippets" },
     { "<leader>ss", "<cmd>UltiSnipsEdit<cr>", desc = "Edit UltiSnips" },
     { "<leader>t", group = "Term" },
+
+    { "<leader>m", group="Molten"},
+    { "<leader>mi", ":MoltenInit<CR>", desc="Molten Initialize"},
+    { "<leader>me", ":MoltenEvaluateOperator<CR>", desc="Molten Evaluate Operator"},
+    { "<leader>mR", ":MoltenReevaluateCell<CR>", desc="Molten Reevaluate Cell"},
+    { "<leader>mj", ":noautocmd MoltenEnterOutput<CR>", desc="Molten Enter Output"},
+    { "<leader>mk", ":MoltenHideOutput<CR>", desc="Molten Hide Output"},
+    { "<leader>md", ":MoltenDelete<CR>", desc="Molten Delete"},
+
+    {"<leader>r", group="Quarto Run"},
+
+    {"<leader>rc", require("quarto.runner").run_cell,  { desc = "run cell", silent = true }},
+    {"<leader>ra", require("quarto.runner").run_above, { desc = "run cell and above", silent = true }},
+    {"<leader>rA", require("quarto.runner").run_all,   { desc = "run all cells", silent = true }},
+    {"<leader>rl", require("quarto.runner").run_line,  { desc = "run line", silent = true }},
+    {"<leader>rr", function()
+      require("quarto.runner").run_all(true)
+    end, { desc = "run all cells of all languages", silent = true }},
+
     { "p", 'p:let @+=@0<CR>:let @"=@0<CR>', desc = "Dont copy replaced text" },
   })
 
