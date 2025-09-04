@@ -174,21 +174,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 
--- Jupyter stuff
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
-    local root = vim.fs.root(0, { ".git", ".venv" })
-    if root then
-      local venv_python = root .. "/.venv/bin/python"
-      if vim.fn.filereadable(venv_python) == 1 then
-        vim.g.python3_host_prog = venv_python
-      end
-    end
-  end
-})
-
-
 -- More examples, disabled by default
 
 -- Toggle between relative/absolute line numbers

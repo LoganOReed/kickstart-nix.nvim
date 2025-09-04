@@ -116,13 +116,6 @@ with final.pkgs.lib; let
     vim-sway-nav
     vimtex
     hardtime-nvim # maybe start disabled if it gets annoying
-
-    
-    image-nvim # for inline images and molten
-    molten-nvim # jupyter notebooks in nvim
-    jupytext-nvim
-    quarto-nvim
-
   ];
 
   extraPackages = with pkgs; [
@@ -135,29 +128,13 @@ with final.pkgs.lib; let
     zathura
     manix
     pplatex
-    imagemagick
-    python3Packages.jupytext
-    quarto
-    # ueberzugpp
   ];
-  extraLuaPackages = ps: [ps.magick];
-  extraPython3Packages = ps: with ps;[
-    pynvim
-    jupytext
-    jupyter-client
-    cairosvg
-    pnglatex
-    plotly
-    pyperclip
-    kaleido
-  ];
-
 in {
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
-    inherit extraPackages extraLuaPackages extraPython3Packages;
+    inherit extraPackages;
   };
 
   # This can be symlinked in the devShell's shellHook
