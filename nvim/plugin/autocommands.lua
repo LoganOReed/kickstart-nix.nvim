@@ -173,6 +173,19 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"tex", "latex"},
+  group = "VimtexBasedWorkflow",
+  callback = function()
+    vim.keymap.set("i", "<C-f>", function()
+      local line = vim.api.nvim_get_current_line()
+      local root = vim.b.vimtex.root
+      vim.cmd('silent exec ".!inkscapefigures create \\"' .. line .. '\\" \\"' .. root .. '/figures/\\""')
+      vim.cmd("w")
+    end, { buffer = true, desc = "Create Inkscape figure" })
+  end,
+})
+
 
 -- More examples, disabled by default
 

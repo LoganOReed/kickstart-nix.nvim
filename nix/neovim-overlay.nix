@@ -128,6 +128,8 @@ with final.pkgs.lib; let
     zathura
     manix
     pplatex
+    # inkscapefigures
+    inputs.inkscapefigures.packages.${system}.default
   ];
 in {
   # This is the neovim derivation

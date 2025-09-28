@@ -6,6 +6,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
     alejandra.url = "github:kamadorueda/alejandra";
+    inkscapefigures.url = "github:LoganOReed/inkscapefigures";
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
@@ -36,6 +37,7 @@
     nixpkgs,
     flake-utils,
     gen-luarc,
+    inkscapefigures,
     ...
   }: let
     supportedSystems = [
@@ -54,6 +56,7 @@
         overlays = [
           # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
           neovim-overlay
+          
           # This adds a function can be used to generate a .luarc.json
           # containing the Neovim API all plugins in the workspace directory.
           # The generated file can be symlinked in the devShell's shellHook.
@@ -72,6 +75,7 @@
           texlab
           wmctrl
           alejandra
+          inkscapefigures.packages.${system}.default
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay
