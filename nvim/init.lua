@@ -1,3 +1,6 @@
+-- TODO:
+-- Add this https://github.com/gillescastel/inkscape-shortcut-manager
+
 local cmd = vim.cmd
 local fn = vim.fn
 local opt = vim.o
