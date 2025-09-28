@@ -195,6 +195,15 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- run inkscapefigures watch when opening latex
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = {"tex", "latex"},
+  group = "VimtexBasedWorkflow",
+  callback = function()
+    vim.cmd('silent exec ".!inkscapefigures watch"')
+  end,
+})
+
 
 
 

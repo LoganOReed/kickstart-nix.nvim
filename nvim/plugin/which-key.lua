@@ -38,6 +38,7 @@ keymap("n", "<leader>E", "<cmd>Oil<cr>", { desc = "Open parent directory without
 
 wk.add(  {
     { "<Esc>", ":noh <CR>", desc = "Clear highlights" },
+    { "<leader>a", "<cmd>!inkscapefigures watch<CR>", desc = "Starts inkscape link in current latex project" },
     { "<leader>f", group = "Find" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffer" },
     { "<leader>fe", "<cmd>Telescope nerdy<cr>", desc = "Find NerdFont Emoji" },
