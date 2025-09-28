@@ -183,8 +183,19 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.cmd('silent exec ".!inkscapefigures create \\"' .. line .. '\\" \\"' .. root .. '/figures/\\""')
       vim.cmd("w")
     end, { buffer = true, desc = "Create Inkscape figure" })
+    vim.keymap.set("n", "<C-f>", function()
+      local root = vim.b.vimtex.root
+      if root then
+        vim.cmd('silent exec "!inkscapefigures edit \\"' .. root .. '/figures/\\" > /dev/null 2>&1 &"')
+        vim.cmd("redraw!")
+      else
+        print("vimtex root not defined")
+      end
+    end, { buffer = true, desc = "Edit Inkscape figure" })
   end,
 })
+
+
 
 
 -- More examples, disabled by default
