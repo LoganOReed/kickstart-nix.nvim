@@ -10,6 +10,7 @@ g.vimtex_mappings_disable = { ["n"] = { "K" } } -- disable `K` as it conflicts w
 g.vimtex_quickfix_method = vim.fn.executable("pplatex") == 1 and "pplatex" or "latexlog"
 g.vimtex_motion_enabled = 1
 g.vimtex_matchparen_enabled = 0
-g.vimtex_fold_enabled = 1
+g.vimtex_fold_enabled = 0
+-- g.vimtex_fold_enabled = 1
 g.tex_conceal = 'abdmg'
 -- g.vimtex_fold_manual = 1
