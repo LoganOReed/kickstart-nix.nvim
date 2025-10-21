@@ -11,7 +11,7 @@ vim.g.did_load_harpoon_plugin = true
 
 require("harpoon"):setup()
 
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<leader>A", function() harpoon:list():add() end)
 vim.keymap.set("n", "<C-c>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
 vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
